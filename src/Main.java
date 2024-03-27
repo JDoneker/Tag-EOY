@@ -7,7 +7,7 @@ public class Main {
 		System.out.println("Hello my name is cade mansour");
 		System.out.println("hi cade how are you doing");
 		System.out.println("what up big dog");
-		System.out.println("Thanks fo the protein bar");
+		System.out.println("Thanks for the protein bar");
 	}
 
 }
