@@ -9,12 +9,10 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 public class MyPanel extends JPanel implements Runnable,KeyListener {
-	private static final int WIDTH = 1000;
-	private static final int HEIGHT = 700;
 	private BufferedImage back;
 	
 	MyPanel(){
-		this.setPreferredSize(new Dimension(WIDTH,HEIGHT));
+		this.setPreferredSize(new Dimension(super.getWidth(),super.getHeight()));
 		this.setBackground(Color.GRAY);
 		back = null;
 		new Thread(this).start();
@@ -34,7 +32,6 @@ public class MyPanel extends JPanel implements Runnable,KeyListener {
 			back = (BufferedImage) (createImage(getWidth(),getHeight()));
 		}
 		Graphics g2d = back.createGraphics();
-		
 		g2d.clearRect(0,0,getSize().width,getSize().height);
 		g2d.fillRect(0, 0, 10, 690);
 		g2d.fillRect(990, 0, 10, 10);
