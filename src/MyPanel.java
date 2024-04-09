@@ -2,61 +2,39 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MyPanel extends JPanel implements Runnable,KeyListener {
-	private BufferedImage back;
+public class MyPanel extends JPanel implements ActionListener{
+	private int clicks = 0;
+	 JLabel label = new JLabel("Number of players");
 	
 	MyPanel(){
-		this.setPreferredSize(new Dimension(super.getWidth(),super.getHeight()));
 		this.setBackground(Color.GRAY);
-		back = null;
-		new Thread(this).start();
-	}
-	public void run() {
-		try {
-			while(true) {
-				Thread.currentThread().sleep(5);
-				repaint();
-			}
-		}
-		catch(Exception e) {}
-	}
-	public void paint(Graphics g) {
-		Graphics2D twoDgraph = (Graphics2D)g;
-		if(back == null) {
-			back = (BufferedImage) (createImage(getWidth(),getHeight()));
-		}
-		Graphics g2d = back.createGraphics();
-		g2d.clearRect(0,0,getSize().width,getSize().height);
-		g2d.fillRect(0, 0, 10, 690);
-		g2d.fillRect(990, 0, 10, 10);
-		g2d.setColor(Color.RED);
-		g2d.fillRect(0, 0, 990, 10);
-		g2d.fillRect(0,690,10,10);
-		twoDgraph.drawImage(back, 0, 0, null);
-		
-	}
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		this.setBorder(BorderFactory.createEmptyBorder(50, 50, 40, 50));
+        this.setLayout(new GridLayout(0, 1));
+        this.add(label);
+        String[] numbers = {"1","2","3","4"};
+        JComboBox dropDown = new JComboBox(numbers);
+        dropDown.setSelectedIndex(0);
+        dropDown.addActionListener(this);
+        this.add(dropDown);
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void actionPerformed(ActionEvent e) {
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
+	
 
 }
