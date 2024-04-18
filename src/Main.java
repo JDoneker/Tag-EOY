@@ -1,53 +1,28 @@
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 
-public class Main implements WindowListener{
-	static GUIFrame guiFrame; 
-	public static void main(String[] args) {
+public class Main{
+	private static GUIFrame guiFrame; 
+	private static ArrayList<PlayerFrame> PlayerFrames;
+	
+	public static void main(String[] args) { 	
 		guiFrame = new GUIFrame();
-	}
-
-	@Override
-	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
+		PlayerFrames = new ArrayList<PlayerFrame>();
 		
-	}
-
-	@Override
-	public void windowClosing(WindowEvent e) {
-		System.out.println(Integer.toString(guiFrame.getNumOfPlayers()));
-		// TODO Auto-generated method stub
+		synchronized(guiFrame) {
+	        try {
+	            guiFrame.wait();
+	        }
+	        catch(InterruptedException e){
+	            e.printStackTrace();
+	        }
+	    }
 		
-	}
-
-	@Override
-	public void windowClosed(WindowEvent e) {
-		
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowIconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowActivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent e) {
-		// TODO Auto-generated method stub
+		int numOfWindows = guiFrame.getNumOfPlayers();
+		for(int i = 0; i<numOfWindows; i++) {
+			PlayerFrames.add(new PlayerFrame(i+1));
+		}
 		
 	}
 

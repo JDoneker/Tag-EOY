@@ -6,7 +6,6 @@ public class GUIFrame extends JFrame{
 	
 	GUIFrame() {
 		super("Extreme Tag");
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setResizable(false);
 		//this.setUndecorated(true);
 		
@@ -20,13 +19,14 @@ public class GUIFrame extends JFrame{
 	}
 
 	public void setNumOfPlayers(int numOfPlayers1) {
-		numOfPlayers = numOfPlayers1;
-		System.out.print(this);
-		System.out.println(numOfPlayers);
-		this.dispose();
-		
+		synchronized(this) {
+			numOfPlayers = numOfPlayers1;
+			System.out.print(this);
+			System.out.println(numOfPlayers);
+		    notify();
+		    this.dispose();
+		}
 	}
-
 	public int getNumOfPlayers() {
 		return numOfPlayers;
 	}

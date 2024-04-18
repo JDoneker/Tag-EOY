@@ -8,15 +8,15 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-public class Player extends JPanel implements Runnable,KeyListener {
+public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 	private BufferedImage back;
-	
-	Player(){
-		this.setPreferredSize(new Dimension(super.getWidth(),super.getHeight()));
+	PlayerPanel(){
+		this.setPreferredSize(new Dimension(400,300));
 		this.setBackground(Color.GRAY);
 		back = null;
 		new Thread(this).start();
 	}
+	
 	public void run() {
 		try {
 			while(true) {
@@ -33,11 +33,12 @@ public class Player extends JPanel implements Runnable,KeyListener {
 		}
 		Graphics g2d = back.createGraphics();
 		g2d.clearRect(0,0,getSize().width,getSize().height);
-		g2d.fillRect(0, 0, 10, 690);
-		g2d.fillRect(990, 0, 10, 10);
+		g2d.fillRect(0, 0, 10, 290);
+		g2d.fillRect(390, 0, 10, 10);
 		g2d.setColor(Color.RED);
-		g2d.fillRect(0, 0, 990, 10);
-		g2d.fillRect(0,690,10,10);
+		g2d.fillRect(0, 0, 390, 10);
+		g2d.fillRect(0,290,10,10);
+		
 		twoDgraph.drawImage(back, 0, 0, null);
 		
 	}
