@@ -10,10 +10,14 @@ import javax.swing.JPanel;
 
 public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 	private BufferedImage back;
+	private int offset;
 	PlayerPanel(){
+		offset = 0;
 		this.setPreferredSize(new Dimension(500,320));
 		this.setBackground(Color.GRAY);
 		back = null;
+
+		this.addKeyListener(this);
 		new Thread(this).start();
 	}
 	
@@ -38,26 +42,29 @@ public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 		g2d.setColor(Color.RED);
 		g2d.fillRect(0, 0, 390, 10);
 		g2d.fillRect(0,310,10,10);
-		
+		g2d.setColor(Color.GREEN);
+		g2d.fillRect(offset, 0, 25, 25);
 		twoDgraph.drawImage(back, 0, 0, null);
 		
 	}
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(e.getKeyChar());
+		System.out.println("hello1");
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		offset++;
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(e.getKeyChar());
+		System.out.println("hello3");
 	}
-
 }

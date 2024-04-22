@@ -14,8 +14,8 @@ public class PlayerFrame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		panel = new PlayerPanel();
+		panel.setFocusable(true);
 		this.add(panel);
-		this.setFocusable(true);
 		this.pack();
 		
 		int screenLeft = (int)(0.25*Toolkit.getDefaultToolkit().getScreenSize().getWidth()-0.5*this.getWidth());
