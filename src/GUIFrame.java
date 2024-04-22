@@ -7,6 +7,7 @@ public class GUIFrame extends JFrame{
 	GUIFrame() {
 		super("Extreme Tag");
 		this.setResizable(false);
+		
 		//this.setUndecorated(true);
 		
 		panel = new GUIPanel(this);
@@ -14,7 +15,7 @@ public class GUIFrame extends JFrame{
 		this.add(panel);
 		this.pack();
 		
-		//this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
 

@@ -21,7 +21,7 @@ public class Main{
 		
 		int numOfWindows = guiFrame.getNumOfPlayers();
 		for(int i = 0; i<numOfWindows; i++) {
-			PlayerFrames.add(new PlayerFrame(i+1));
+			PlayerFrames.add(new PlayerFrame(i));
 		}
 		
 	}

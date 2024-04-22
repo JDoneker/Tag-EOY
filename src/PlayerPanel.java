@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 	private BufferedImage back;
 	PlayerPanel(){
-		this.setPreferredSize(new Dimension(400,300));
+		this.setPreferredSize(new Dimension(500,320));
 		this.setBackground(Color.GRAY);
 		back = null;
 		new Thread(this).start();
@@ -33,11 +33,11 @@ public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 		}
 		Graphics g2d = back.createGraphics();
 		g2d.clearRect(0,0,getSize().width,getSize().height);
-		g2d.fillRect(0, 0, 10, 290);
+		g2d.fillRect(0, 0, 10, 310);
 		g2d.fillRect(390, 0, 10, 10);
 		g2d.setColor(Color.RED);
 		g2d.fillRect(0, 0, 390, 10);
-		g2d.fillRect(0,290,10,10);
+		g2d.fillRect(0,310,10,10);
 		
 		twoDgraph.drawImage(back, 0, 0, null);
 		
