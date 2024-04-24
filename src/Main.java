@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Main{
 	private static GUIFrame guiFrame; 
 	private static ArrayList<PlayerFrame> PlayerFrames;
+	private static Environment environment;
 	
 	public static void main(String[] args) { 	
 		guiFrame = new GUIFrame();
@@ -23,6 +24,7 @@ public class Main{
 		for(int i = 0; i<numOfWindows; i++) {
 			PlayerFrames.add(new PlayerFrame(i));
 		}
+		environment = new Environment(PlayerFrames);
 		
 	}
 
