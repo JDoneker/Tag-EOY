@@ -12,9 +12,10 @@ public class PlayerFrame extends JFrame {
 		super("Player "+Integer.toString(i+1));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setFocusable(false);
 		
 		panel = new PlayerPanel();
-		panel.setFocusable(true);
+		panel.setFocusable(false);
 		this.add(panel);
 		this.pack();
 		
@@ -29,8 +30,7 @@ public class PlayerFrame extends JFrame {
 				new Point(screenRight,screenBottom)
 		};
 		this.setLocation(windowLocations[i]);
-		
-		//this.setLocationRelativeTo(null);
+
 		this.setVisible(true);
 	}
 

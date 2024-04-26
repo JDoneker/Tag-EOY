@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-public class PlayerPanel extends JPanel implements Runnable,KeyListener {
+public class PlayerPanel extends JPanel implements Runnable{
 	private BufferedImage back;
 	private int offset;
 	PlayerPanel(){
@@ -17,7 +17,6 @@ public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 		this.setBackground(Color.GRAY);
 		back = null;
 
-		this.addKeyListener(this);
 		new Thread(this).start();
 	}
 	
@@ -37,6 +36,7 @@ public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 		}
 		Graphics g2d = back.createGraphics();
 		g2d.clearRect(0,0,getSize().width,getSize().height);
+		
 		g2d.fillRect(0, 0, 10, 310);
 		g2d.fillRect(390, 0, 10, 10);
 		g2d.setColor(Color.RED);
@@ -44,27 +44,8 @@ public class PlayerPanel extends JPanel implements Runnable,KeyListener {
 		g2d.fillRect(0,310,10,10);
 		g2d.setColor(Color.GREEN);
 		g2d.fillRect(offset, 0, 25, 25);
+		
 		twoDgraph.drawImage(back, 0, 0, null);
 		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println(e.getKeyChar());
-		System.out.println("hello1");
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		offset++;
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println(e.getKeyChar());
-		System.out.println("hello3");
 	}
 }
