@@ -1,20 +1,19 @@
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 public class PlayerFrame extends JFrame {
 	private PlayerPanel panel;
 	
-	public PlayerFrame(int i) {
+	public PlayerFrame(int i, ArrayList<Integer> KeyCodes) {
 		super("Player "+Integer.toString(i+1));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setFocusable(false);
 		
-		panel = new PlayerPanel();
+		panel = new PlayerPanel(KeyCodes);
 		panel.setFocusable(false);
 		this.add(panel);
 		this.pack();
@@ -33,5 +32,9 @@ public class PlayerFrame extends JFrame {
 
 		this.setVisible(true);
 	}
+	public PlayerPanel getPanel() {
+		return panel;
+	}
+
 
 }

@@ -2,17 +2,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 public class PlayerPanel extends JPanel implements Runnable{
 	private BufferedImage back;
-	private int offset;
-	PlayerPanel(){
-		offset = 0;
+	private ArrayList<Integer> KeyCodes;
+	private int x,y;
+	PlayerPanel(ArrayList<Integer> keyCodes){
+		x = 0;
+		y = 0;
+		KeyCodes = keyCodes;
+		
 		this.setPreferredSize(new Dimension(500,320));
 		this.setBackground(Color.GRAY);
 		back = null;
@@ -38,14 +41,29 @@ public class PlayerPanel extends JPanel implements Runnable{
 		g2d.clearRect(0,0,getSize().width,getSize().height);
 		
 		g2d.fillRect(0, 0, 10, 310);
-		g2d.fillRect(390, 0, 10, 10);
+		g2d.fillRect(490, 0, 10, 10);
 		g2d.setColor(Color.RED);
-		g2d.fillRect(0, 0, 390, 10);
+		g2d.fillRect(0, 0, 490, 10);
 		g2d.fillRect(0,310,10,10);
 		g2d.setColor(Color.GREEN);
-		g2d.fillRect(offset, 0, 25, 25);
+		g2d.fillRect(x, y, 25, 25);
 		
 		twoDgraph.drawImage(back, 0, 0, null);
 		
+	}
+	public ArrayList<Integer> getKeyCodes(){
+		return KeyCodes;
+	}
+	public void moveR() {
+		x++;
+	}
+	public void moveL() {
+		x--;
+	}
+	public void moveU() {
+		y--;
+	}
+	public void moveD() {
+		y++;
 	}
 }

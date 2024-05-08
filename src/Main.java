@@ -1,15 +1,11 @@
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 public class Main{
 	private static GUIFrame guiFrame; 
-	private static ArrayList<PlayerFrame> PlayerFrames;
 	private static Environment environment;
 	
 	public static void main(String[] args) { 	
 		guiFrame = new GUIFrame();
-		PlayerFrames = new ArrayList<PlayerFrame>();
 		
 		synchronized(guiFrame) {
 	        try {
@@ -20,12 +16,16 @@ public class Main{
 	        }
 	    }
 		
-		int numOfWindows = guiFrame.getNumOfPlayers();
-		for(int i = 0; i<numOfWindows; i++) {
-			PlayerFrames.add(new PlayerFrame(i));
-		}
-		environment = new Environment(PlayerFrames);
+		environment = new Environment();
 		
+		int numOfWindows = guiFrame.getNumOfPlayers();
+		ArrayList<ArrayList<Integer>> KeyCodes = guiFrame.getKeyCodes();
+		
+		for(int i = 0; i<numOfWindows; i++) {
+			environment.addPlayer(new PlayerFrame(i,KeyCodes.get(i)));
+		}
+		
+		environment.start();
 	}
 
 }
