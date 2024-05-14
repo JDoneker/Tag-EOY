@@ -1,4 +1,3 @@
-import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -9,13 +8,14 @@ import javax.swing.JLabel;
 public class Environment extends JFrame implements KeyListener, Runnable {
 	JLabel label;
 	ArrayList<PlayerFrame> PlayerFrames;
-	
+	ArrayList<Integer> activeKeys;
 	public Environment() {
 		super("Environment");
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		PlayerFrames = new ArrayList<PlayerFrame>();
+		activeKeys = new ArrayList<Integer>();
 		
 		label = new JLabel("hello");
 		this.add(label);
@@ -36,6 +36,9 @@ public class Environment extends JFrame implements KeyListener, Runnable {
 		try {
 			while(true) {
 				Thread.currentThread().sleep(5);
+				for(int i = 0; i < activeKeys.size(); i++) {
+					checkKey(activeKeys.get(i));
+				}
 				label.setText(Long.toString(System.currentTimeMillis()));
 			}
 		}
@@ -47,10 +50,7 @@ public class Environment extends JFrame implements KeyListener, Runnable {
 		this.setFocusable(true);
 		this.requestFocus();
 	}
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
+	public void checkKey(int key) {
 		ArrayList<Integer> tempKeyCodes;
 		if(PlayerFrames.size()>=1) {
 			tempKeyCodes = PlayerFrames.get(0).getPanel().getKeyCodes();
@@ -113,9 +113,17 @@ public class Environment extends JFrame implements KeyListener, Runnable {
 			}
 		}
 	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(!activeKeys.contains(e.getKeyCode())) {
+			activeKeys.add(e.getKeyCode());
+		}		
+	}
  
 	@Override
-	public void keyReleased(KeyEvent e) {}
+	public void keyReleased(KeyEvent e) {
+		activeKeys.remove(activeKeys.indexOf(e.getKeyCode()));
+	}
 	@Override
 	public void keyTyped(KeyEvent e) {}
 
