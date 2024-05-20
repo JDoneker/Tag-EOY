@@ -7,13 +7,13 @@ import javax.swing.JFrame;
 public class PlayerFrame extends JFrame {
 	private PlayerPanel panel;
 	
-	public PlayerFrame(int i, ArrayList<Integer> KeyCodes) {
+	public PlayerFrame(int i, ArrayList<Integer> KeyCodes, Environment E1) {
 		super("Player "+Integer.toString(i+1));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setFocusable(false);
 		
-		panel = new PlayerPanel(KeyCodes);
+		panel = new PlayerPanel(i, KeyCodes,E1);
 		panel.setFocusable(false);
 		this.add(panel);
 		this.pack();

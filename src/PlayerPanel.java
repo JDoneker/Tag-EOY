@@ -11,11 +11,28 @@ public class PlayerPanel extends JPanel implements Runnable{
 	private BufferedImage back;
 	private ArrayList<Integer> KeyCodes;
 	private int x,y;
-	PlayerPanel(ArrayList<Integer> keyCodes){
+	private Color PlayerColor;
+	private Environment E;
+	
+	PlayerPanel(int i, ArrayList<Integer> keyCodes, Environment E1){
 		x = 0;
 		y = 0;
+		E = E1;
+		switch(i) {
+		case 0:
+			PlayerColor = Color.RED;
+			break;
+		case 1:
+			PlayerColor = Color.GREEN;
+			break;
+		case 2: 
+			PlayerColor = Color.BLUE;
+			break;
+		case 3:
+			PlayerColor = Color.ORANGE;
+			break;
+		}
 		KeyCodes = keyCodes;
-		
 		this.setPreferredSize(new Dimension(500,320));
 		this.setBackground(Color.GRAY);
 		back = null;
@@ -38,18 +55,21 @@ public class PlayerPanel extends JPanel implements Runnable{
 			back = (BufferedImage) (createImage(getWidth(),getHeight()));
 		}
 		Graphics g2d = back.createGraphics();
-		g2d.clearRect(0,0,getSize().width,getSize().height);
+		g2d.setColor(PlayerColor);
+		g2d.fillRect(0, 0, getSize().width, getSize().height);
+		g2d.clearRect(5,5,getSize().width-10,getSize().height-10);
 		
-		g2d.fillRect(0, 0, 10, 310);
-		g2d.fillRect(490, 0, 10, 10);
-		g2d.setColor(Color.RED);
-		g2d.fillRect(0, 0, 490, 10);
-		g2d.fillRect(0,310,10,10);
-		g2d.setColor(Color.GREEN);
-		g2d.fillRect(x, y, 25, 25);
+		ArrayList<PlayerFrame> playerFrames = E.getPlayers();
+		for(int i = 0; i<playerFrames.size(); i++) {
+			playerFrames.get(i).getPanel().drawPlayer(g2d);
+		}
 		
 		twoDgraph.drawImage(back, 0, 0, null);
 		
+	}
+	public void drawPlayer(Graphics g2d) {
+		g2d.setColor(PlayerColor);
+		g2d.fillRect(x, y, 25, 25);
 	}
 	public ArrayList<Integer> getKeyCodes(){
 		return KeyCodes;

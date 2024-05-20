@@ -22,7 +22,7 @@ public class Main{
 		ArrayList<ArrayList<Integer>> KeyCodes = guiFrame.getKeyCodes();
 		
 		for(int i = 0; i<numOfWindows; i++) {
-			environment.addPlayer(new PlayerFrame(i,KeyCodes.get(i)));
+			environment.addPlayer(new PlayerFrame(i,KeyCodes.get(i), environment));
 		}
 		
 		environment.start();

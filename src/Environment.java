@@ -29,7 +29,6 @@ public class Environment extends JFrame implements KeyListener, Runnable {
 
 	public void addPlayer(PlayerFrame playerFrame) {
 		PlayerFrames.add(playerFrame);
-		
 	}
 	@Override
 	public void run() {
@@ -44,7 +43,9 @@ public class Environment extends JFrame implements KeyListener, Runnable {
 		}
 		catch(Exception e) {}
 	}
-
+	public ArrayList<PlayerFrame> getPlayers(){
+		return PlayerFrames;
+	}
 	public void start() {
 		new Thread(this).start();
 		this.setFocusable(true);
