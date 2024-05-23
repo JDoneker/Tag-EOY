@@ -20,7 +20,7 @@ public class HelloJOGL {
 		Screen screen = NewtFactory.createScreen(disp, 0);
 		window = GLWindow.create(screen, caps);
 		window.setSize(800,600);
-		window.setTitle("Hello Java OpenGL");
+		window.setTitle("Hello Java OpenGL Test commit");
 		window.setVisible(true);
 		
 		anim = new Animator(window);
