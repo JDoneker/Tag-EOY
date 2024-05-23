@@ -6,8 +6,8 @@ public class Main{
 	
 	public static void main(String[] args) { 	
 		guiFrame = new GUIFrame();
-		HelloJOGL hello = new HelloJOGL();
-		System.out.println("hello this is a test of the main branch. ");
+		//HelloJOGL hello = new HelloJOGL();
+		System.out.println("hello this is is is a test of the main branch. ");
 		
 		synchronized(guiFrame) {
 	        try {
