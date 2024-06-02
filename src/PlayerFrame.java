@@ -18,23 +18,23 @@ public class PlayerFrame extends JFrame implements GLEventListener {
 	private int PlayerIndex;
 	private GLCanvas myCanvas;
 	private ArrayList<Integer> KeyCodes;
-	private Color PlayerColor;
+	private Vector4f PlayerColor;
 	
 	public PlayerFrame(int i, ArrayList<Integer> KeyCodes1) {
 		PlayerIndex = i;
 		KeyCodes = KeyCodes1;
 		switch(i) {
 		case 0:
-			PlayerColor = Color.RED;
+			PlayerColor = new Vector4f(1.0f,0.0f,0.0f, 1.0f);//RED
 			break;
 		case 1:
-			PlayerColor = Color.GREEN;
+			PlayerColor = new Vector4f(0.0f,1.0f,0.0f, 1.0f);//GREEN
 			break;
 		case 2: 
-			PlayerColor = Color.BLUE;
+			PlayerColor = new Vector4f(0.0f,0.0f,1.0f, 1.0f);//BLUE
 			break;
 		case 3:
-			PlayerColor = Color.ORANGE;
+			PlayerColor = new Vector4f(1.0f,0.4f,0.0f, 1.0f);//ORANGE
 			break;
 		}
 		
@@ -81,5 +81,9 @@ public class PlayerFrame extends JFrame implements GLEventListener {
 	public void init(GLAutoDrawable drawable){}
 	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) { }
 	public void dispose(GLAutoDrawable drawable) { }
-	public void display(GLAutoDrawable drawable){}
+	public void display(GLAutoDrawable drawable){
+		GL4 gl = (GL4) GLContext.getCurrentGL();
+		gl.glClearColor(PlayerColor.x,PlayerColor.y,PlayerColor.z,PlayerColor.w);
+		gl.glClear(GL_COLOR_BUFFER_BIT);
+	}
 }
