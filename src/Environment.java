@@ -54,63 +54,63 @@ public class Environment extends JFrame implements KeyListener, Runnable {
 	public void checkKey(int key) {
 		ArrayList<Integer> tempKeyCodes;
 		if(PlayerFrames.size()>=1) {
-			tempKeyCodes = PlayerFrames.get(0).getPanel().getKeyCodes();
+			tempKeyCodes = PlayerFrames.get(0).getKeyCodes();
 			if(key == tempKeyCodes.get(0)) {
-				PlayerFrames.get(0).getPanel().moveU();
+				PlayerFrames.get(0).moveU();
 			}
 			if(key == tempKeyCodes.get(1)) {
-				PlayerFrames.get(0).getPanel().moveD();
+				PlayerFrames.get(0).moveD();
 			}
 			if(key == tempKeyCodes.get(2)) {
-				PlayerFrames.get(0).getPanel().moveL();
+				PlayerFrames.get(0).moveL();
 			}
 			if(key == tempKeyCodes.get(3)) {
-				PlayerFrames.get(0).getPanel().moveR();
+				PlayerFrames.get(0).moveR();
 			}
 		}
 		if(PlayerFrames.size()>=2) {
-			tempKeyCodes = PlayerFrames.get(1).getPanel().getKeyCodes();
+			tempKeyCodes = PlayerFrames.get(1).getKeyCodes();
 			if(key == tempKeyCodes.get(0)) {
-				PlayerFrames.get(1).getPanel().moveU();
+				PlayerFrames.get(1).moveU();
 			}
 			if(key == tempKeyCodes.get(1)) {
-				PlayerFrames.get(1).getPanel().moveD();
+				PlayerFrames.get(1).moveD();
 			}
 			if(key == tempKeyCodes.get(2)) {
-				PlayerFrames.get(1).getPanel().moveL();
+				PlayerFrames.get(1).moveL();
 			}
 			if(key == tempKeyCodes.get(3)) {
-				PlayerFrames.get(1).getPanel().moveR();
+				PlayerFrames.get(1).moveR();
 			}
 		}
 		if(PlayerFrames.size()>=3) {
-			tempKeyCodes = PlayerFrames.get(2).getPanel().getKeyCodes();
+			tempKeyCodes = PlayerFrames.get(2).getKeyCodes();
 			if(key == tempKeyCodes.get(0)) {
-				PlayerFrames.get(2).getPanel().moveU();
+				PlayerFrames.get(2).moveU();
 			}
 			if(key == tempKeyCodes.get(1)) {
-				PlayerFrames.get(2).getPanel().moveD();
+				PlayerFrames.get(2).moveD();
 			}
 			if(key == tempKeyCodes.get(2)) {
-				PlayerFrames.get(2).getPanel().moveL();
+				PlayerFrames.get(2).moveL();
 			}
 			if(key == tempKeyCodes.get(3)) {
-				PlayerFrames.get(2).getPanel().moveR();
+				PlayerFrames.get(2).moveR();
 			}
 		}
 		if(PlayerFrames.size()>=4) {
-			tempKeyCodes = PlayerFrames.get(3).getPanel().getKeyCodes();
+			tempKeyCodes = PlayerFrames.get(3).getKeyCodes();
 			if(key == tempKeyCodes.get(0)) {
-				PlayerFrames.get(3).getPanel().moveU();
+				PlayerFrames.get(3).moveU();
 			}
 			if(key == tempKeyCodes.get(1)) {
-				PlayerFrames.get(3).getPanel().moveD();
+				PlayerFrames.get(3).moveD();
 			}
 			if(key == tempKeyCodes.get(2)) {
-				PlayerFrames.get(3).getPanel().moveL();
+				PlayerFrames.get(3).moveL();
 			}
 			if(key == tempKeyCodes.get(3)) {
-				PlayerFrames.get(3).getPanel().moveR();
+				PlayerFrames.get(3).moveR();
 			}
 		}
 	}
